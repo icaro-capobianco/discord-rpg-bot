@@ -1,0 +1,26 @@
+{
+  "name": "the-game-master",
+  "version": "1.0.0",
+  "description": "Discord Bot for RPG\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[CGeneral purpose discord bot for RPG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/icaro-capobianco/the-game-master.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot"
+  ],
+  "author": "Ícaro C. Capobianco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/icaro-capobianco/the-game-master/issues"
+  },
+  "homepage": "https://gitlab.com/icaro-capobianco/the-game-master#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
