@@ -1,0 +1,8 @@
+
+
+class MessageHandler {
+
+    handleMessage( message ) {
+    }
+
+}
