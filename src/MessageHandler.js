@@ -1,4 +1,4 @@
-const Message = require('../models/discord/messages/Message');
+const Message = require('./models/discord/messages/Message');
 
 class MessageHandler {
 
