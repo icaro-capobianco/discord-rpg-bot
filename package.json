@@ -1,7 +1,7 @@
 {
   "name": "the-game-master",
   "version": "1.0.0",
-  "description": "Discord Bot for RPG\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[CGeneral purpose discord bot for RPG",
+  "description": "General purpose discord bot for playing RPG",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

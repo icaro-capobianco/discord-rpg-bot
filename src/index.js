@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { token } = require ( '../config.json' );
-const messageHandler = require('./MessageHandler');
+const { handleMessage, handleCommand } = require('./functions');
 const client = new Discord.Client()
 
 client.once('ready', () => {
@@ -9,7 +9,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
     console.log('Message received')
-    messageHandler.handleMessage( message )
+    handleMessage( message )
 })
 
 client.login(token);
