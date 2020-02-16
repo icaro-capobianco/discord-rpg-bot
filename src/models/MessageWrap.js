@@ -7,7 +7,7 @@ class MessageWrap {
         console.log(`Message has the lines ${this.lines}`);
     }
     isCommand() {
-        if (this.discordMessage.content.match(`^${prefix} `) !== null) {
+        if (this.discordMessage.content.match(`^${prefix}`) !== null) {
             console.log(`Message is a command`);
             return true;
         }
