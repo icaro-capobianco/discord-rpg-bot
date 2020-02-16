@@ -1,11 +1,12 @@
-const Message = require('./models/discord/messages/Message');
+const MessageWrap = require('./models/MessageWrap');
 
 class MessageHandler {
 
-    handleMessage( message ) {
-        var message = new Message( message )
-        if( message.isBotMessage() ) {
-            console.log( message.getLines() )
+    handleMessage( discordMessage ) {
+        console.log( 'Message being handled' )
+        var message = new MessageWrap( discordMessage )
+        if( message.isCommand() ) {
+            this.handleCommand( discordMessage );
         }
     }
 
