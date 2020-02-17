@@ -2,7 +2,7 @@
   "name": "the-game-master",
   "version": "1.0.0",
   "description": "General purpose discord bot for playing RPG",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
@@ -23,7 +23,7 @@
   "homepage": "https://gitlab.com/icaro-capobianco/the-game-master#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "nodemon": "^2.0.1",
+    "nodemon": "^2.0.2",
     "npm-watch": "^0.6.0"
   }
 }
