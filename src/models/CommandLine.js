@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-const CommandsMap = [
+const CommandsTree = [
     { name: 'character', slug: 'char', subs: [
         { name: 'create',    description: 'Example: \ngm! character create [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
         { name: 'update',    description: 'Example: \ngm! character update [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
@@ -23,38 +23,36 @@ class CommandLine {
         }
     }
 
-    execute() {
-        console.log( 'Command being executed' )
-        let firstCommand = this.getNthCommand(1);
-        console.log( `First command is ${firstCommand}` )
-        if( ! firstCommand )
-            throw 'No command received!'
+    readNthCommand(n) {
+        console.log( `Reading command ${i}...` )
 
-        let command1 = CommandsMap.find( e => {
-            return e.name === firstCommand
+        let commandName = this.getNthCommand(i)
+        if( ! commandName )
+            return false
+
+        console.log( `Reading command ${i}: ${commandName}` )
+
+        nthCommand = CommandsTree.find( e => {
+            e.name = commandName
         } )
-        console.log( `First command obj is ${JSON.stringify(command1)}` )
-        if( ! command1 ) {
-            throw `${Discord.escapeMarkdown( firstCommand )} is not a valid command`
+        if( ! nthCommand ) {
+            throw `${Discord.escapeMarkdown( nthCommand )} is not a valid command`
         }
+        return nthCommands
+    }
 
-        let command = command1
-        var i = 1
-        while ( typeof command.subs !== 'undefined' && command.subs.length > 0 ) {
+    execute() {
+        console.log( 'Executing CommandLine' )
+
+        let command
+        for (let i=1;i<this.commands.length;i++) {
+        }
+        var i = 0
+        do  {
             i++
-
-            let commandName = this.getNthCommand(i)
-            if( ! commandName )
-                return this.messageSubCommands( command )
-
-            nthCommand = command.subs.find( e => {
-                e.name === commandName
-            } )
-            if( ! nthCommand ) {
-                throw `${Discord.escapeMarkdown( nthCommand )} is not a valid command`
-            }
-            command = nthCommand
-        }
+            command = this.readNthCommand(i)
+        } while ( typeof command.subs !== 'undefined' && command.subs.length > 0 );
+        command.callback()
     }
 
     messageSubCommands( command ) {
