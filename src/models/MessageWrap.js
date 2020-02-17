@@ -24,6 +24,13 @@ class MessageWrap {
     getLines() {
         return this.lines;
     }
+    reply( text ) {
+        this.discordMessage.reply( text ).then( sent => {
+            console.log( `Sent a reply to ${sent.author.username}` )
+        } ).catch( err => {
+            console.log( err )
+        } )
+    }
 }
 
 module.exports = MessageWrap;
