@@ -16,22 +16,26 @@ class CommandLine {
         this.message = message
         this.commands = message.getCommands()
     }
+
     getCommand(commandName) {
-        return CommandsTree.find( e => {
+        let command = CommandsTree.find( e => {
             e.name = commandName
         } )
+        if( ! command ) {
+            throw `${commandName} is not a valid command`
+        }
+        return command;
     }
 
     execute() {
         console.log('Reading CommandLine')
         let commandName = this.commands[1] || false;
-        if( ! commandName )
-            this.messageCommands(CommandsTree)
+        if( ! commandName ) {
+            return this.messageCommands(CommandsTree)
+        }
         console.log(`First command is: ${commandName}`)
 
         let command = this.getCommand(commandName)
-        if( ! command )
-            throw `${commandName} is not a valid command`
 
         this.executeCommand(command, this.commands.splice(2))
     }
@@ -39,15 +43,18 @@ class CommandLine {
     executeCommand(command, parameters) {
         console.log(`Reading command ${command.name}`)
         if( command.children ) {
+
             console.log(`Command ${command.name} has children`)
             var childName = parameters[0] || false
-            if( ! childName )
-                this.messageCommands(command.children)
+            if( ! childName ) {
+                return this.messageCommands(command.children)
+            }
             console.log(`Child command name: ${childName}`)
-                var childCommand = this.getCommand(childName)
-            if( ! childCommand )
-                throw `${childName} is not a valid command`
-            this.executeCommand(child, parameters.splice(1))
+
+            var childCommand = this.getCommand(childName)
+
+            this.executeCommand(childCommand, parameters.splice(1))
+
         } else {
             console.log(`Executing command ${command.name}`)
             command.callback()
