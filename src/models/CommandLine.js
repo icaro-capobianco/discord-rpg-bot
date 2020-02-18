@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 
-const CommandsTree = [
-    { name: 'character', slug: 'char', children: [
-        { name: 'create',    description: 'Example: \ngm! character create [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
-        { name: 'update',    description: 'Example: \ngm! character update [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
-        { name: 'addto',     description: 'Example: \ngm! character addto [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will result in a list of values. For example if your attribute is currency:1gp and you add currency:1sp you will have currency: 1gp, 1sp.' },
-        { name: 'increment', description: 'Example: \ngm! character increment [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will only work to numeric values, it will increment the attibute by the desired amount, but only if the current attribute value is also numeric.' },
-    ], vars: [ 'name' ], description: 'For characater related commands' }
-];
+const CommandsTree = {
+    character: { name: 'character', children: {
+        create: { name: 'create', description: 'Example: \ngm! character create [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
+        update: { name: 'update', description: 'Example: \ngm! character update [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
+        addto: { name: 'addto', description: 'Example: \ngm! character addto [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will result in a list of values. For example if your attribute is currency:1gp and you add currency:1sp you will have currency: 1gp, 1sp.' },
+        increment: { name: 'increment', description: 'Example: \ngm! character increment [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will only work to numeric values, it will increment the attibute by the desired amount, but only if the current attribute value is also numeric.' },
+    } },
+}
 
 class CommandLine {
 
@@ -18,11 +18,9 @@ class CommandLine {
     }
 
     findCommand(commandName) {
-        let command = CommandsTree.find( e => {
-            return e.name === commandName
-        } )
+        let command = CommandsTree[commandName]
         if( ! command ) {
-            throw `${commandName} is not a valid command`
+            throw new `${commandName} is not a valid command`
         }
         return command;
     }
