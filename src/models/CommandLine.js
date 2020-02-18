@@ -17,7 +17,7 @@ class CommandLine {
         this.commands = message.getCommands()
     }
 
-    getCommand(commandName) {
+    findCommand(commandName) {
         let command = CommandsTree.find( e => {
             return e.name === commandName
         } )
@@ -35,7 +35,7 @@ class CommandLine {
         }
         console.log(`First command is: ${commandName}`)
 
-        let command = this.getCommand(commandName)
+        let command = this.findCommand(commandName)
 
         this.executeCommand(command, this.commands.splice(2))
     }
@@ -51,7 +51,7 @@ class CommandLine {
             }
             console.log(`Child command name: ${childName}`)
 
-            var childCommand = this.getCommand(childName)
+            var childCommand = this.findCommand(childName)
 
             this.executeCommand(childCommand, parameters.splice(1))
 
