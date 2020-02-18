@@ -6,7 +6,7 @@ const CommandsTree = [
         { name: 'update',    description: 'Example: \ngm! character update [character_name]\n[attribute_name]:[attribute_value]\n-----\ncheck your server sheet making channel for more info.' },
         { name: 'addto',     description: 'Example: \ngm! character addto [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will result in a list of values. For example if your attribute is currency:1gp and you add currency:1sp you will have currency: 1gp, 1sp.' },
         { name: 'increment', description: 'Example: \ngm! character increment [character_name]\n[attribute_name]:[attribute_value]\n-----\nthis will only work to numeric values, it will increment the attibute by the desired amount, but only if the current attribute value is also numeric.' },
-    ], vars: [ 'name' ] }
+    ], vars: [ 'name' ], description: 'For characater related commands' }
 ];
 
 class CommandLine {
@@ -64,7 +64,7 @@ class CommandLine {
     messageCommands(commands) {
         var reply = commands.reduce( ( a, e ) => {
             if( a === '' )
-                a = `\nFor the command **${command.name}** try:`
+                a = `here are some options you can try:`
             return `${a}\n**${e.name}:**\n${e.description}\n`
         }, '' )
 
