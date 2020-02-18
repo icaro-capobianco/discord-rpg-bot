@@ -19,7 +19,7 @@ class CommandLine {
 
     getCommand(commandName) {
         let command = CommandsTree.find( e => {
-            e.name = commandName
+            return e.name === commandName
         } )
         if( ! command ) {
             throw `${commandName} is not a valid command`
