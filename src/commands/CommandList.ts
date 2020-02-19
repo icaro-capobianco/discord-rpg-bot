@@ -2,14 +2,17 @@ import Command from "./Command";
 
 export default class CommandList {
 
-    [key: string]: Command | string;
-    message: string;
+    data: Record<string, Command>
+    helpMessage: string;
 
     constructor( commands: Array<Command> ) {
+        let commandsObj: Record<string, Command> = {}
         commands.forEach((e: Command) => {
-            this[e.name] = e
+            commandsObj[e.name] = e
         })
-        this.message = commands.reduce(( a, e ) => {
+        this.data = commandsObj
+
+        this.helpMessage = commands.reduce(( a, e ) => {
             if(a === '')
                 a = `here are some options you can try:`
             return `${a}\n**${e.name}:**\n${e.description}\n`

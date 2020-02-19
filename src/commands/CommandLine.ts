@@ -1,5 +1,7 @@
 import MessageWrap from '../models/MessageWrap';
 import CommandsTree from './CommandTree';
+import CommandList from './CommandList';
+import Command from './Command';
 
 export default class CommandLine {
 
@@ -14,7 +16,7 @@ export default class CommandLine {
 
     findCommand(commandName: string) {
         console.log(`Finding command ${commandName} in CommandsTree`)
-        let command = CommandsTree[commandName] || false
+        let command = CommandsTree.data[commandName] || false
         if(! command) {
             throw new Error( `${commandName} is not a valid command` )
         }
@@ -56,8 +58,8 @@ export default class CommandLine {
     }
 
     messageCommands(commandList: CommandList) {
-        console.log(`Listing commands of commandList: ${commandList.message}`)
-        this.message.reply(commandList.message)
+        console.log(`Listing commands of commandList: ${commandList.helpMessage}`)
+        this.message.reply(commandList.helpMessage)
     }
     
 }
