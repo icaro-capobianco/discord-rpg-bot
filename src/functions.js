@@ -15,7 +15,8 @@ function handleCommand(message) {
     try {
         command.execute()
     } catch (error) {
-        message.reply(error)
+        console.log('Error when executing CommandLine')
+        message.reply(`${error.message}`)
     }
 }
 

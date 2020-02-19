@@ -10,11 +10,12 @@ class CommandLine {
     }
 
     findCommand(commandName) {
-        let command = CommandsTree[commandName]
+        console.log(`Finding command ${commandName} in CommandsTree`)
+        let command = CommandsTree[commandName] || false
         if(! command) {
-            throw new `${commandName} is not a valid command`
+            throw new Error( `${commandName} is not a valid command` )
         }
-        return command;
+        return command
     }
 
     execute() {
@@ -51,18 +52,9 @@ class CommandLine {
         }
     }
 
-    messageCommands(commands) {
-        var reply = commands.reduce(( a, e ) => {
-            if(a === '')
-                a = `here are some options you can try:`
-            return `${a}\n**${e.name}:**\n${e.description}\n`
-        }, '')
-
-        this.message.discordMessage.reply(reply).then(sent => {
-            console.log(`Sent a reply to ${sent.author.username}`)
-        }).catch( err => {
-            console.log(err)
-        })
+    messageCommands(commandList) {
+        console.log(`Listing commands of commandList: ${commandList.message}`)
+        this.message.reply(commandList.message)
     }
     
 }

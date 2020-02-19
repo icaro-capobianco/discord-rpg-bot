@@ -30,6 +30,7 @@ class MessageWrap {
         } ).catch( err => {
             console.log( err )
         } )
+        console.log( `Sending a reply to ${this.discordMessage.author.username} saying: ${text}` )
     }
 }
 
