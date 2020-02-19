@@ -1,7 +1,8 @@
-const MessageWrap = require('./models/MessageWrap');
-const CommandLine = require('./commands/CommandLine');
+import { Message } from 'discord.js';
+import MessageWrap from './models/MessageWrap';
+import CommandLine from './commands/CommandLine';
 
-function handleMessage(discordMessage) {
+function handleMessage(discordMessage: Message) {
     console.log('Message being handled')
     let message = new MessageWrap(discordMessage)
     if( message.isCommand() ) {
@@ -9,7 +10,7 @@ function handleMessage(discordMessage) {
     }
 }
 
-function handleCommand(message) {
+function handleCommand(message: MessageWrap) {
     console.log('Command being handled')
     let command = new CommandLine(message)
     try {
@@ -20,4 +21,4 @@ function handleCommand(message) {
     }
 }
 
-module.exports = { handleMessage, handleCommand };
+export { handleMessage, handleCommand }
