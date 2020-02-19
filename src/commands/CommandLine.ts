@@ -1,17 +1,22 @@
-const Discord = require('discord.js');
-const CommandsTree = require( './CommandTree' )
+import MessageWrap from '../models/MessageWrap';
+import CommandsTree from './CommandTree';
+import CommandList from './CommandList';
+import Command from './Command';
 
-class CommandLine {
+export default class CommandLine {
 
-    constructor(message) {
+    message: MessageWrap
+    commands: Array<string>
+
+    constructor(message: MessageWrap) {
         console.log('CommandLine loaded')
         this.message = message
         this.commands = message.getCommands()
     }
 
-    findCommand(commandName) {
+    findCommand(commandName: string) {
         console.log(`Finding command ${commandName} in CommandsTree`)
-        let command = CommandsTree[commandName] || false
+        let command = CommandsTree.data[commandName] || false
         if(! command) {
             throw new Error( `${commandName} is not a valid command` )
         }
@@ -31,7 +36,7 @@ class CommandLine {
         this.executeCommand(command, this.commands.splice(2))
     }
 
-    executeCommand(command, parameters) {
+    executeCommand(command: Command, parameters: Array<string>) {
         console.log(`Reading command ${command.name}`)
         if(command.children) {
 
@@ -52,11 +57,9 @@ class CommandLine {
         }
     }
 
-    messageCommands(commandList) {
-        console.log(`Listing commands of commandList: ${commandList.message}`)
-        this.message.reply(commandList.message)
+    messageCommands(commandList: CommandList) {
+        console.log(`Listing commands of commandList: ${commandList.helpMessage}`)
+        this.message.reply(commandList.helpMessage)
     }
     
 }
-
-module.exports = CommandLine;
