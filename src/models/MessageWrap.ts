@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import { prefix } from '../../config.json';
 
-export class MessageWrap {
+export default class MessageWrap {
 
     discordMessage: Message
     lines: Array<string>
