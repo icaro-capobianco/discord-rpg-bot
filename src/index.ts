@@ -1,6 +1,6 @@
 import Discord, { Message } from 'discord.js';
 import { token } from '../config.json';
-import { handleMessage, handleCommand } from './functions.js';
+import { handleMessage } from './functions.js';
 const client = new Discord.Client()
 
 client.once('ready', () => {
