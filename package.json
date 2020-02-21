@@ -26,7 +26,8 @@
     "@types/ws": "^7.2.1",
     "discord.js": "github:discordjs/discord.js",
     "nodemon": "^2.0.2",
-    "npm-watch": "^0.6.0"
+    "npm-watch": "^0.6.0",
+    "tsc": "^1.20150623.0"
   },
   "devDependencies": {
     "typescript": "^3.7.5"
