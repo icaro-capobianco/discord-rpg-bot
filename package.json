@@ -22,14 +22,14 @@
   },
   "homepage": "https://gitlab.com/icaro-capobianco/the-game-master#readme",
   "dependencies": {
+    "discord.js": "github:discordjs/discord.js"
+  },
+  "devDependencies": {
     "@types/node": "^13.7.2",
     "@types/ws": "^7.2.1",
-    "discord.js": "github:discordjs/discord.js",
+    "typescript": "^3.7.5",
     "nodemon": "^2.0.2",
     "npm-watch": "^0.6.0",
     "tsc": "^1.20150623.0"
-  },
-  "devDependencies": {
-    "typescript": "^3.7.5"
   }
 }
